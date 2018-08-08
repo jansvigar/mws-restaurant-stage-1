@@ -1,6 +1,11 @@
 let restaurant;
 var newMap;
 
+var starRatingIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                        <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
+                        <path fill="none" d="M0 0h18v18H0z"/>
+                      </svg>`
+
 /**
  * Initialize map as soon as the page is loaded.
  */
@@ -22,7 +27,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: '<your MAPBOX API KEY HERE>',
+        mapboxToken: 'pk.eyJ1IjoiamFuc3ZpZ2FyIiwiYSI6ImNqampwMW9reDB0Ynoza256NXBrbDExdmMifQ.hT8o8DFjlbDdka6jh7DnIA',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -148,16 +153,14 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
-  const name = document.createElement('p');
-  name.innerHTML = review.name;
-  li.appendChild(name);
-
-  const date = document.createElement('p');
-  date.innerHTML = review.date;
-  li.appendChild(date);
-
+  const reviewHeading = document.createElement('p');
   const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
+  for(let i = 0; i < review.rating; i++) {
+    rating.innerHTML += starRatingIcon;
+  }
+  reviewHeading.innerHTML = `${review.name} reviewed on ${review.date} :`;
+  
+  li.appendChild(reviewHeading);
   li.appendChild(rating);
 
   const comments = document.createElement('p');

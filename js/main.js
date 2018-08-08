@@ -157,29 +157,48 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
  */
 createRestaurantHTML = (restaurant) => {
   const li = document.createElement('li');
+  li.setAttribute('tabIndex', '0');
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   li.append(image);
 
+  const detailsWrapper = document.createElement('div');
+  detailsWrapper.className = 'restaurant-details-wrapper';
   const name = document.createElement('h1');
   name.innerHTML = restaurant.name;
-  li.append(name);
+  detailsWrapper.append(name);
 
   const neighborhood = document.createElement('p');
   neighborhood.innerHTML = restaurant.neighborhood;
-  li.append(neighborhood);
+  detailsWrapper.append(neighborhood);
 
   const address = document.createElement('p');
   address.innerHTML = restaurant.address;
-  li.append(address);
+  detailsWrapper.append(address);
 
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  li.append(more)
 
+  detailsWrapper.append(more)
+  
+  detailsWrapper.addEventListener("mouseenter", slideUp);
+  detailsWrapper.addEventListener("mouseover", slideUp);
+  li.addEventListener("focus", slideUp, true);
+  li.addEventListener("blur", slideDown);
+  more.addEventListener("blur", slideDown);
+  detailsWrapper.addEventListener("mouseleave", slideDown);
+
+  function slideUp(e) {
+    detailsWrapper.classList.add('open');
+  }
+  function slideDown() {
+    detailsWrapper.classList.remove('open');
+  }
+
+  li.append(detailsWrapper);
   return li
 }
 
