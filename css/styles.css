@@ -219,14 +219,6 @@ header h1 a svg {
 }
 
 /* ====================== Restaurant Details ====================== */
-/* .inside header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  height: 76px;
-} */
-
 .inside #map {
   background-color: #ccc;
   height: 100%;
