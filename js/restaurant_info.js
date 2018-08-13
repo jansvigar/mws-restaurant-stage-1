@@ -1,7 +1,7 @@
 let restaurant;
 var newMap;
 
-var starRatingIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+var starRatingIcon = `<svg role="img" aria-hidden="true" width="18" height="18" viewBox="0 0 18 18">
                         <path d="M9 11.3l3.71 2.7-1.42-4.36L15 7h-4.55L9 2.5 7.55 7H3l3.71 2.64L5.29 14z"/>
                         <path fill="none" d="M0 0h18v18H0z"/>
                       </svg>`
@@ -93,6 +93,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
 
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
+  image.setAttribute('alt', '');
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
 
   const cuisine = document.getElementById('restaurant-cuisine');
@@ -133,6 +134,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   const container = document.getElementById('reviews-container');
   const title = document.createElement('h2');
   title.innerHTML = 'Reviews';
+  title.setAttribute("tabindex", 0);
   container.appendChild(title);
 
   if (!reviews) {
@@ -155,6 +157,10 @@ createReviewHTML = (review) => {
   const li = document.createElement('li');
   const reviewHeading = document.createElement('p');
   const rating = document.createElement('p');
+  const ratingForScreenReaders = document.createElement('span');
+  ratingForScreenReaders.innerText = `${review.rating} stars rating`;
+  ratingForScreenReaders.classList.add('visually-hidden');
+  rating.appendChild(ratingForScreenReaders);
   for(let i = 0; i < review.rating; i++) {
     rating.innerHTML += starRatingIcon;
   }

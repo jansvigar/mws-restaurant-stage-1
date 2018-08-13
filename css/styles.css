@@ -3,23 +3,18 @@
 html, body {
   height: 100%;
 }
-body,td,th,p{
+body,td,th,p {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 12px;
 	color: #333;
 	line-height: 1.5;
 }
 body {
 	background-color: #fdfdfd;
 	margin: 0;
-  position:relative;
+  position: relative;
   display: flex;
   flex-flow: column nowrap;
-}
-ul, li {
-	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
-	color: #333;
 }
 a {
 	color: orange;
@@ -29,11 +24,7 @@ a:hover, a:focus {
 	color: #3397db;
 	text-decoration: none;
 }
-a img{
-	border: none 0px #fff;
-}
 h1, h2, h3, h4, h5, h6 {
-  font-family: Arial, Helvetica, sans-serif;
   margin: 0 0 20px;
 }
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
@@ -41,61 +32,51 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #maincontent {
   background-color: #f3f3f3;
-  display: block;
+  display: flex;
+  flex-flow: column nowrap;
+  height: 100%;
 }
 #footer {
   background-color: #444;
   color: #aaa;
-  font-size: 8pt;
+  font-size: 0.7rem;
   letter-spacing: 1px;
-  padding: 25px;
+  padding: 15px 0;
   text-align: center;
   text-transform: uppercase;
 }
-
-@media only screen and (min-width: 600px) {
-  #maincontent {
-    display: flex;
-    flex-flow: row nowrap;
-    height: 100%;
-  }
-}
-
 /* ====================== Header ====================== */
 header {
-  display: flex;
   background-color: #252831;
-  flex: 0 0 76px;
+  padding: 10px 0;
+  text-align: center;
 }
 header h1 {
   margin: auto;
-  display: inline-block;
 }
 header h1 a {
   color: #fff;
-  font-size: 1.5rem;
-  font-weight: 200;
-  letter-spacing: 5px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 4px;
   text-transform: uppercase;
-  display: flex;
-  flex-flow: row nowrap;
 }
 header h1 a:hover {
   color: #fff;
 }
 header h1 a svg {
-  margin-right: 10px;
-  margin-left: 5px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 /* ====================== Navigation ====================== */
 #breadcrumb {
-    padding: 90px 40px 16px;
+    padding: 10px 20px;
     list-style: none;
     background-color: #eee;
-    font-size: 17px;
+    font-size: 0.9rem;
     margin: 0;
-    width: calc(50% - 80px);
+    width: 100%;
 }
 
 /* Display list items side by side */
@@ -123,7 +104,8 @@ header h1 a svg {
 }
 /* ====================== Map ====================== */
 #map-container {
-  display: none;
+  flex: 1;
+  order: 1;
 }
 #map {
   height: 100%;
@@ -131,59 +113,19 @@ header h1 a svg {
   background-color: #ccc;
 }
 
-@media only screen and (min-width: 600px) {
-  #map-container {
-    display: flex;
-    flex: 1 1 70%;
-    flex-flow: column nowrap;
-  }
-}
-/* ====================== Restaurant Filtering ====================== */
-.filter-options {
-  width: 100%;
-  background-color: #3397DB;
-  align-items: center;
-}
-.filter-options h2 {
-  color: white;
-  font-size: 1rem;
-  font-weight: normal;
-  line-height: 1;
-  margin: 0 20px;
-  padding-top: 10px;
-  display: none;
-}
-.filter-options-elements {
-  display: flex;
-  flex-flow: row nowrap;
-}
-.filter-options select {
-  background-color: white;
-  border: 1px solid #fff;
-  font-family: Arial,sans-serif;
-  font-size: 11pt;
-  height: 35px;
-  letter-spacing: 0;
-  margin: 10px;
-  padding: 0 10px;
-  width: 200px;
-}
-
-@media only screen and (min-width: 540px) {
-  .filter-options-elements {
-    flex-flow: column nowrap;
-  }
-  .filter-options h2 {
-    display: block;
-  }
-  .filter-options select {
-    width: auto;
-    flex: 1;
-  }
-}
-
 /* ====================== Restaurant Listing ====================== */
+#list-container {
+  display: flex;
+  flex-flow: column nowrap;
+  flex: 3;
+  order: 2;
+}
 #restaurants-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: flex-start;
+  overflow-y: scroll;
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
@@ -195,10 +137,10 @@ header h1 a svg {
   position: relative;
   background-color: #fff;
   border: 2px solid #ccc;
-  font-family: Arial,sans-serif;
-  margin: 15px;
+  margin: 10px 20px;
   text-align: left;
   overflow-y: hidden;
+  width: 100%;
 }
 #restaurants-list .restaurant-img {
   background-color: #ccc;
@@ -210,8 +152,7 @@ header h1 a svg {
 }
 #restaurants-list li h1 {
   color: #f18200;
-  font-family: Arial,sans-serif;
-  font-size: 1rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0;
   line-height: 1.3;
@@ -220,11 +161,11 @@ header h1 a svg {
 }
 #restaurants-list p {
   margin: 0;
-  font-size: 0.8rem;
+  font-size: 0.65rem;
 }
 #restaurants-list li a {
   background-color: orange;
-  color: #fff;
+  color: #424242;
   display: inline-block;
   font-size: 0.7rem;
   margin: 15px 0;
@@ -247,59 +188,59 @@ header h1 a svg {
   transform: translateY(0);
 }
 
-@media only screen and (min-width: 600px) {
-  #list-container {
-    display: flex;
-    flex-flow: column nowrap;
-    flex: 1 1 30%;
-  }
-  #restaurants-list {
-    display: block;
-    overflow-y: scroll;
-  }
+/* ====================== Restaurant Filtering ====================== */
+.filter-options {
+  width: 100%;
+  background-color: #3397DB;
+  align-items: center;
+}
+.filter-options h2 {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: normal;
+  line-height: 1;
+  margin: 0 10px;
+  padding-top: 10px;
+  text-decoration: underline;
+}
+.filter-options-elements {
+  display: flex;
+  flex-flow: column nowrap;
+}
+.filter-options select {
+  background-color: white;
+  border: 1px solid #fff;
+  font-size: 0.8rem;
+  height: 25px;
+  letter-spacing: 0;
+  margin: 10px;
+  padding: 0 10px;
+  flex: 1;
 }
 
 /* ====================== Restaurant Details ====================== */
-.inside header {
+/* .inside header {
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 1000;
   height: 76px;
-}
-@media only screen and (min-width: 600px) {
-  .inside #maincontent {
-    display: block;
-    height: auto;
-  }
-}
-.inside #map-container {
-  background: blue none repeat scroll 0 0;
-  height: calc(100% - 141px);
-  position: fixed;
-  right: 0;
-  top: 76px;
-  width: 50%;
-}
+} */
+
 .inside #map {
   background-color: #ccc;
   height: 100%;
   width: 100%;
 }
-.inside #footer {
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-}
-
 .inside #restaurant-wrapper {
-  width: 50%;
-  padding-bottom: 70px;
+  height: 100%;
+  flex: 4;
+  overflow-y: scroll;
+  order: 3;
 }
 #restaurant-name {
   color: #f18200;
-  font-family: Arial,sans-serif;
-  font-size: 20pt;
+  font-size: 1.5rem;
   font-weight: 200;
   letter-spacing: 0;
   margin: 15px 0 30px;
@@ -310,13 +251,13 @@ header h1 a svg {
 	width: 100%;
 }
 #restaurant-address {
-  font-size: 12pt;
+  font-size: 1rem;
   margin: 10px 0px;
 }
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
-  font-size: 12pt;
+  font-size: 1rem;
   font-weight: 300;
   letter-spacing: 10px;
   margin: 0 0 20px;
@@ -362,10 +303,17 @@ header h1 a svg {
   margin: 0 0 10px;
 }
 #reviews-list li p:first-of-type {
-  color: #888;
+  color: #595959;
 }
 #restaurant-hours td {
   color: #666;
+}
+.visually-hidden { /* https://snook.ca/archives/html_and_css/hiding-content-for-accessibility */
+  position: absolute !important;
+  height: 1px; width: 1px; 
+  overflow: hidden;
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 /* ============== MATERIAL ICONS FONT ================== */
@@ -383,3 +331,52 @@ header h1 a svg {
 /* Rules for using icons as white on a dark background. */
 .material-icons.md-light { color: rgba(255, 255, 255, 1); }
 .material-icons.md-light.md-inactive { color: rgba(255, 255, 255, 0.3); }
+
+@media screen and (min-width: 400px) {
+  #restaurants-list li {
+    flex: 1 0 195px;
+    max-width: 250px;
+    margin: 5px 0 0;
+  }
+}
+@media screen and (min-width: 600px) {
+  header h1 a {
+    font-size: 1.4rem;
+  }
+  #maincontent {
+    flex-flow: row nowrap;
+  }
+  #map-container {
+    order: 2;
+  }
+  #list-container {
+    flex: 0 0 340px;
+    order: 1;
+  }
+  #restaurants-list li {
+    flex: 1 1 100%;
+    max-width: 100%;
+    margin: 10px 10px 0;
+  }
+  #restaurants-list li h1 {
+    font-size: 1rem;
+  }
+  #restaurants-list li p {
+    font-size: 0.8rem;
+  }
+  .filter-options-elements {
+    flex-flow: row nowrap;
+  }
+  .filter-options select {
+    font-size: 0.8rem;
+    height: 35px;
+  }
+  .filter-options select {
+    flex: 1;
+  }
+  .inside #restaurant-wrapper {
+    flex: 1;
+    max-width: 600px;
+    order: 1;
+  }
+}
