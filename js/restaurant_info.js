@@ -201,3 +201,16 @@ getParameterByName = (name, url) => {
     return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+/**
+ * Register a service worker to enable offline caching
+ */
+registerServiceWorker = () => {
+  if('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('../sw.js')
+        .then(reg => console.log(reg))
+        .catch(err => console.log(err));
+    })
+  }
+}
