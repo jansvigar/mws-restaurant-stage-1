@@ -150,7 +150,7 @@ header h1 a svg {
   min-width: 100%;
   min-height: 100%;
 }
-#restaurants-list li h1 {
+#restaurants-list li h3 {
   color: #f18200;
   font-size: 0.8rem;
   font-weight: 400;
@@ -268,7 +268,7 @@ header h1 a svg {
 #reviews-container {
   padding: 0;
 }
-#reviews-container h2 {
+#reviews-container h3 {
   color: #f58500;
   font-size: 24pt;
   font-weight: 300;
@@ -350,7 +350,7 @@ header h1 a svg {
     max-width: 100%;
     margin: 10px 10px 0;
   }
-  #restaurants-list li h1 {
+  #restaurants-list li h3 {
     font-size: 1rem;
   }
   #restaurants-list li p {

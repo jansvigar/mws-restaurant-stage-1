@@ -1,7 +1,7 @@
 /**
  * Define cache version to allow service worker update in the future
  */
-var CACHE_NAME = 'restaurant-reviews-cache-v1'
+var CACHE_NAME = 'restaurant-reviews-cache-v2'
 
 /**
  * Add fetch event listener to intercept fetch request
